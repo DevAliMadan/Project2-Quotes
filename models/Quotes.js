@@ -4,6 +4,8 @@ const reasonSchema = new Schema({
     creator: String,
     content: String,
 },{timeseries:true})
+
+
 const quotesSchema = new Schema({
     quote: {
         type: String,
