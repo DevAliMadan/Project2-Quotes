@@ -4,7 +4,9 @@ const dotenv = require("dotenv").config()
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const connectToDB = require("./config/db")
+const authorRoutes = require("./routes/authors-routes")
 const authRoutes = require("./routes/auth-routes")
+const quoteRoutes = require("./routes/Quotes-routes")
 const  session = require("express-session")
 const isSignedIn = require("./middleware/isSignedIn")
 const passUserToView = require("./middleware/passUserToView")
@@ -32,9 +34,10 @@ connectToDB()
 
 
 
-
+app.use("/authors", authorRoutes)
 app.use("/auth", authRoutes)
 app.use(isSignedIn)
+app.use("/quotes", quoteRoutes)
 
 
 const port = process.env.PORT || 3000
