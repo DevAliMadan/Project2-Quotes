@@ -9,7 +9,28 @@
     <h1>Quote Details</h1>
 
     <h2>Quote: <%= quoteDetails.quote %></h2>
+    <p>Author: <%= quoteDetails.author %></p>
     <p>Category: <%= quoteDetails.category %></p>
 
+    <br>
+    <br>
+
+    <h3>Why Do you like it</h3>
+
+    <form action="/quotes/<%= quoteDetails._id %>/reason" method="post">
+        <label for="creator">Name: </label>
+        <input type="text" name="creator" id="creator">
+
+        <label for="content">Your Reason: </label>
+        <input type="text" name="content" id="content">
+
+        <button type="submit">Submit Reason</button>
+    </form>
+
+    <% quoteDetails.reason.forEach((oneReason)=>{ %>
+        <p><%= oneReason.content %></p>
+        <p>By <%= oneReason.creator %></p>
+    
+    <% }) %>
 </body>
 </html>

@@ -41,6 +41,18 @@ router.get("/:quoteId", async(req,res)=>{
     }
 })
 
+router.post("/:quoteId/reason", async(req,res)=>{
+    try{
+        const quoteDetails = await Quotes.findById(req.params.quoteId)
+        console.log(quoteDetails)
+        quoteDetails.reason.push(req.body)
+        quoteDetails.save()
+        res.redirect(`quotes/${quoteDetails._id}`)
+    }
+    catch(error){
+        console.log(error)
+    }
+})
 
 
 module.exports = router
