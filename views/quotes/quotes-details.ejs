@@ -32,5 +32,9 @@
         <p>By <%= oneReason.creator %></p>
     
     <% }) %>
+
+    <form action="/quotes/<%= quoteDetails._id %>?_method=DELETE" method="post">
+        <button type="submit">Delete the quote</button>
+    </form>
 </body>
 </html>

@@ -55,4 +55,15 @@ router.post("/:quoteId/reason", async(req,res)=>{
 })
 
 
+router.delete(":quoteId", async(req,res)=>{
+    console.log(req.params)
+    try{
+        const deleteQuote = await Quotes.findByIdAndDelete(req.params.quoteId)
+        res.redirect("auth/login")
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
 module.exports = router
