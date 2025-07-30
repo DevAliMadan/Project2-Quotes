@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config()
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const connectToDB = require("./config/db")
-const authorRoutes = require("./routes/authors-routes")
+const categoriesRoutes = require("./routes/categories-routes")
 const authRoutes = require("./routes/auth-routes")
 const quoteRoutes = require("./routes/Quotes-routes")
 const  session = require("express-session")
@@ -34,7 +34,7 @@ connectToDB()
 
 
 
-app.use("/authors", authorRoutes)
+app.use("/category", categoriesRoutes)
 app.use("/auth", authRoutes)
 app.use(isSignedIn)
 app.use("/quotes", quoteRoutes)

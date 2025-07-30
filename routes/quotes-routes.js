@@ -1,10 +1,10 @@
 const Quotes = require("../models/Quotes")
-const Author = require("../models/Authors")
+const Category = require("../models/Categories")
 const router = require("express").Router()
 
 router.get("/new",async(req,res)=>{
-    const allAuthors = await Author.find()
-    res.render("quotes/new.ejs",{allAuthors: allAuthors})
+    const allCategories = await Category.find()
+    res.render("quotes/new.ejs",{allCategories: allCategories})
 })
 
 
@@ -30,6 +30,16 @@ router.get("/",async(req,res)=>{
     }
 })
 
+router.get("/:quoteId", async(req,res)=>{
+    try{
+        const quoteDetails = await Quotes.findById(req.params.quoteId)
+        console.log(quoteDetails)
+        res.render("quotes/quotes-details.ejs",{quoteDetails})
+    }
+    catch(error){
+        console.log(error)
+    }
+})
 
 
 

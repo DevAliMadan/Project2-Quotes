@@ -1,15 +1,15 @@
-const Author = require("../models/Authors")
+const Category = require("../models/Categories")
 const router = require("express").Router()
 
 
 router.get("/new",(req,res)=>{
-    res.render("authors/new.ejs")
+    res.render("category/new.ejs")
 })
 
 router.post("/",async(req,res)=>{
     try{
-        const createdAuthor = await Author.create(req.body)
-        res.redirect("/authors/new")
+        const createdCategory = await Category.create(req.body)
+        res.redirect("/quotes/new")
     }
     catch(error){
         console.log(error)

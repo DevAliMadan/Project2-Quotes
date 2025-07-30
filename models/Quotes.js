@@ -3,13 +3,14 @@ const {model, Schema} = require("mongoose")
 const reasonSchema = new Schema({
     creator: {
     type: Schema.Types.ObjectId,
-    required: true
+    required: true,
+    ref: "User"
     },
     content: {
         type: String,
         required: true
     }
-},{timeseries:true})
+})// },{timeseries:true})
 
 
 const quotesSchema = new Schema({
