@@ -27,7 +27,7 @@ app.use(
     })
 )
 app.use(passUserToView)
-app.get("view engine", "ejs")
+app.set("view engine", "ejs")
 
 connectToDB()
 

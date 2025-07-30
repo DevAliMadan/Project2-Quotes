@@ -1,8 +1,14 @@
 const {model, Schema} = require("mongoose")
 
 const reasonSchema = new Schema({
-    creator: String,
-    content: String,
+    creator: {
+    type: Schema.Types.ObjectId,
+    required: true
+    },
+    content: {
+        type: String,
+        required: true
+    }
 },{timeseries:true})
 
 
