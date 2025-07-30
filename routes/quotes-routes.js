@@ -19,7 +19,16 @@ router.post("/",async(req,res)=>{
     }
 })
 
-
+router.get("/",async(req,res)=>{
+    try{
+        const allQuotes = await Quotes.find().populate("author")
+        console.log(req.session)
+        res.render("quotes/all-quotes.ejs", {allQuotes, user:req.session.user})
+    }
+    catch(error){
+        console.log(error)
+    }
+})
 
 
 
