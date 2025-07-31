@@ -6,6 +6,23 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Update Quote</h1>
+
+    <form action="/quotes/<%= quoteDetails_.id %>?_method=PUT" method="post">
+        <label for="quote">Quote: </label>
+        <input type="text" name="quote" id="quote" required>
+
+        <label for="author">Author: </label>
+        <input type="text" name="author" id="author">
+
+        <label for="category">Category:</label>
+        <select name="category">
+            <% allCategories.forEach((oneCategory) => { %>
+                <option value="<%= oneCategory._id %>"><%= oneCategory.name %></option>
+            <% }) %>
+        </select>
     
+    <button>Update</button>
+    </form>
 </body>
 </html>
