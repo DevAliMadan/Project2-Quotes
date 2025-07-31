@@ -1,9 +1,11 @@
 const {model, Schema} = require("mongoose")
 
 const categorySchema = new Schema({
-    name:{
-        type:String
-    }
+  name: {
+    type: String,
+    required: true,
+    unique: true
+  }
 })
 
 const Category = model("Category",categorySchema)

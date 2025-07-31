@@ -2,15 +2,14 @@ const {model, Schema} = require("mongoose")
 
 const reasonSchema = new Schema({
     creator: {
-    type: Schema.Types.ObjectId,
+    type: String,
     required: true,
-    ref: "User"
     },
     content: {
         type: String,
         required: true
     }
-})// },{timeseries:true})
+})
 
 
 const quotesSchema = new Schema({
@@ -19,12 +18,12 @@ const quotesSchema = new Schema({
         required: true
     },
     category: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+         ref: "Category"
     },
     authors: {
-        type: Schema.Types.ObjectId,
-        ref: "Authors"
+        type: String,
+        ref: "Author"
     },
     reason: [reasonSchema],
     creator:{

@@ -7,6 +7,7 @@
 </head>
 <body>
     <%= include('../partials/navbar') %>
+    
     <h1>All Quotes</h1>
 
     <% if(user){ %>
@@ -15,17 +16,13 @@
 
     <% allQuotes.forEach((oneQuote)=>{ %>
         <div>
-            <h2>Quote: <%= oneQuote.quote %></h2>
-            <p>Category: <%= oneQuote.category %></p>
+            <p>Quote: <%= oneQuote.quote %></p>
+            <p>Category: <%= oneQuote.category.name %></p>
+            <p>Author: <%= oneQuote.author %></p>
 
-            <ul>
-                <% oneQuote.author.forEach((oneAuthor)=>{ %>
-                <li><%= oneAuthor.name %></li>
-                
-                <% }) %>
 
                 <a href="/quotes/<%= oneQuote._id %>">See Quote</a>
-            </ul>
+            
         </div>
     <% }) %>
 </body>
