@@ -2,8 +2,8 @@ const {model, Schema} = require("mongoose")
 
 const reasonSchema = new Schema({
     creator: {
-    type: String,
-    required: true,
+        type: String,
+        required: true,
     },
     content: {
         type: String,
@@ -22,8 +22,7 @@ const quotesSchema = new Schema({
          ref: "Category"
     },
     authors: {
-        type: String,
-        ref: "Author"
+        type: String
     },
     reason: [reasonSchema],
     creator:{

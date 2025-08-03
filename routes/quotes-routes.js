@@ -18,7 +18,7 @@ router.post("/",async(req,res)=>{
     try{
         req.body.creator = req.session._id
         await Quotes.create(req.body)
-        res.redirect("/quotes/new") 
+        res.redirect("/quotes/all-quotes") 
     }
     catch(error){
         console.log(error)
@@ -38,7 +38,7 @@ router.get("/all-quotes",async(req,res)=>{
 
 router.get("/:quoteId", async(req,res)=>{
     try{
-        const quoteDetails = await Quotes.findById(req.params.quoteId)
+        const quoteDetails = await Quotes.findById(req.params.quoteId).populate("category")
         console.log(quoteDetails)
         res.render("quotes/quotes-details.ejs",{quoteDetails})
     }
@@ -53,7 +53,7 @@ router.post("/:quoteId/reason", async(req,res)=>{
         console.log(quoteDetails)
         quoteDetails.reason.push(req.body)
         quoteDetails.save()
-        res.redirect(`quotes/${quoteDetails._id}`)
+        res.redirect(`/quotes/${quoteDetails._id}`)
     }
     catch(error){
         console.log(error)
@@ -61,11 +61,11 @@ router.post("/:quoteId/reason", async(req,res)=>{
 })
 
 
-router.delete("/:quoteId", async(req,res)=>{
+router.delete("/:id", async(req,res)=>{
     console.log(req.params)
     try{
-        await Quotes.findByIdAndDelete(req.params.quoteId)
-        res.redirect("quotes/all-quotes")
+        const deleteQuote = await Quotes.findByIdAndDelete(req.params.id)
+        res.redirect("/quotes/new")
     }
     catch(error){
         console.log(error)
@@ -74,13 +74,22 @@ router.delete("/:quoteId", async(req,res)=>{
 
 router.get("/:id/update", async(req,res)=>{
     try{
-        const quoteDetails = await Quotes.findByIdAndUpdate(req.params.id)
-        res.render("quotes/update-quote.ejs")
+        const quoteDetails = await Quotes.findById(req.params.id)
+        const allCategories = await Category.find()
+        res.render("quotes/update-quote", {quoteDetails, allCategories})
     }
     catch(error){
         console.log(error)
     }
 })
-
+router.put("/:quoteId", async(req,res)=>{
+    try{
+        const updateQuote = await Quotes.findByIdAndUpdate(req.params.quoteId, req.body)
+        res.redirect("/quotes/all-quotes")
+    }
+    catch(error){
+        console.log(error)
+    }
+})
 
 module.exports = router

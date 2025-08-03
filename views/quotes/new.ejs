@@ -6,13 +6,15 @@
     <title>quotes</title>
 </head>
 <body>
+    <%- include('../partials/navbar') %>
+
     <h1>Create Your Quote</h1>
     <form action="/quotes" method="post">
         <label for="quote">Quote: </label>
         <input type="text" name="quote" id="quote" required>
 
-        <label for="author">Author: </label>
-        <input type="text" name="author" id="author">
+        <label for="authors">Author: </label>
+        <input type="text" name="authors" id="authors">
 
         <label for="category">Category:</label>
         <select name="category">

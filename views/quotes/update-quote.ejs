@@ -6,14 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+    <%- include('../partials/navbar') %>
     <h1>Update Quote</h1>
 
-    <form action="/quotes/<%= quoteDetails_.id %>?_method=PUT" method="post">
+    <form action="/quotes/<%= quoteDetails._id %>?_method=PUT" method="post">
         <label for="quote">Quote: </label>
         <input type="text" name="quote" id="quote" required>
 
-        <label for="author">Author: </label>
-        <input type="text" name="author" id="author">
+        <label for="authors">Author: </label>
+        <input value="" type="text" name="authors" id="authors">
 
         <label for="category">Category:</label>
         <select name="category">

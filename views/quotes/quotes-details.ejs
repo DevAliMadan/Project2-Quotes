@@ -6,15 +6,17 @@
     <title>Quote Details</title>
 </head>
 <body>
+    <%- include('../partials/navbar') %>
     <h1>Quote Details</h1>
 
-    <h2>Quote: <%= quoteDetails.quote %></h2>
-    <p>Author: <%= quoteDetails.author %></p>
-    <p>Category: <%= quoteDetails.category %></p>
+    <p>Quote: <%= quoteDetails.quote %></p>
+    <p>Author: <%= quoteDetails.authors %></p>
+    <p>Category: <%= quoteDetails.category.name%></p>
+    
 
     <br>
     <br>
-
+    <hr>
     <h3>Why Do you like it</h3>
 
     <form action="/quotes/<%= quoteDetails._id %>/reason" method="post">
@@ -28,7 +30,7 @@
     </form>
 
     <% quoteDetails.reason.forEach((oneReason)=>{ %>
-        <p><%= oneReason.content %></p>
+        <p>Reason: <%= oneReason.content %></p>
         <p>By <%= oneReason.creator %></p>
     
     <% }) %>

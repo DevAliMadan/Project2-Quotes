@@ -16,10 +16,11 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <%- include('../partials/navbar') %>
+
     <h1>Create The Category</h1>
 
-    <form action="/all-quotes" method="post">
+    <form action="/category" method="post">
         <label for="name">Category:</label>
         <input type="text" name="name" id="name">
 

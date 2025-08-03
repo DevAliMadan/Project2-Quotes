@@ -6,7 +6,7 @@
     <title>All Quotes</title>
 </head>
 <body>
-    <%= include('../partials/navbar') %>
+    <%- include('../partials/navbar') %>
     
     <h1>All Quotes</h1>
 
@@ -18,7 +18,7 @@
         <div>
             <p>Quote: <%= oneQuote.quote %></p>
             <p>Category: <%= oneQuote.category.name %></p>
-            <p>Author: <%= oneQuote.author %></p>
+            <p>Author: <%= oneQuote.authors %></p>
 
 
                 <a href="/quotes/<%= oneQuote._id %>">See Quote</a>
