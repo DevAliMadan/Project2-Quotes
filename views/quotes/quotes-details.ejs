@@ -19,6 +19,7 @@
     <hr>
     <h3>Why Do you like it</h3>
 
+<% if (!quoteDetails.reason || quoteDetails.reason.length === 0) { %>
     <form action="/quotes/<%= quoteDetails._id %>/reason" method="post">
         <label for="creator">Name: </label>
         <input type="text" name="creator" id="creator">
@@ -28,13 +29,13 @@
 
         <button type="submit">Submit Reason</button>
     </form>
-
+<% }else{ %>
     <% quoteDetails.reason.forEach((oneReason)=>{ %>
         <p>Reason: <%= oneReason.content %></p>
         <p>By <%= oneReason.creator %></p>
     
     <% }) %>
-
+<% } %>
     <form action="/quotes/<%= quoteDetails._id %>?_method=DELETE" method="post">
         <button type="submit">Delete the quote</button>
     </form>
