@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/public/main-css/auth.css"> -->
+    <link rel="stylesheet" href="/public/main-css/style.css">
     <title>Document</title>
 </head>
 
 <body>
     <%- include('../partials/navbar') %>
-        <h1>Log in</h1>
+        <h1 class="red">Log in</h1>
         <form action="/auth/login" method="post">
             <label for="username">username:</label>
             <input type="text" name="username" id="username">
