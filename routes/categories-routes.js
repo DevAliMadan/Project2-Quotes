@@ -9,7 +9,7 @@ router.get("/new",(req,res)=>{
 router.post("/",async(req,res)=>{
   try {
     await Category.create(req.body);
-    res.redirect("/category/new");
+    res.redirect("/quotes/new");
   } catch (error){
     console.log(error)
   }

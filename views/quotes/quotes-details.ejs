@@ -12,6 +12,11 @@
     <p>Quote: <%= quoteDetails.quote %></p>
     <p>Author: <%= quoteDetails.authors %></p>
     <p>Category: <%= quoteDetails.category.name%></p>
+
+
+    <a href="/quotes/<%= quoteDetails._id %>/update">
+    <button type="button">Edit Quote</button>
+    </a>
     
 
     <br>

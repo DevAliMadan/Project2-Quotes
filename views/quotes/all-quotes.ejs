@@ -13,7 +13,8 @@
     <% if(user){ %>
         <p>user <%= user.username %></p>
     <% } %>
-
+        <br>
+        <hr>
     <% allQuotes.forEach((oneQuote)=>{ %>
         <div>
             <p>Quote: <%= oneQuote.quote %></p>
@@ -22,6 +23,8 @@
 
 
                 <a href="/quotes/<%= oneQuote._id %>">See Quote</a>
+            <br>
+            <hr>
             
         </div>
     <% }) %>
