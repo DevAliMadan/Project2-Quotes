@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/main-css/auth.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" />
     <title>Document</title>
-</head>
-<body>
-        <%- include('../partials/navbar') %>
+  </head>
 
-    <h1>Sign Up</h1>
-    <form action="/auth/sign-up" method="post">
-        <label for="username">username:</label>
-        <input type="text" name="username" id="username">
+  <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+    <%- include('../partials/navbar') %>
 
-        <label for="password">password:</label>
-        <input type="password" name="password" id="password">
+    <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
+      <h1 class="text-2xl font-bold text-center text-blue-600 mb-6">Sign Up</h1>
 
-        <button>Sign Up</button>
-    </form>
-    <% if (error) { %>
-  <p style="color:red" class="error"><%= error %></p>
-<% } %>
-</body>
+      <form action="/auth/sign-up" method="post" class="space-y-4">
+        <div>
+          <label for="username" lass="block text-sm font-medium text-gray-700"
+            >username:</label
+          >
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">password:</label>
+          <input type="password" name="password" id="password" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none" required/>
+        </div>
+
+        <button class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out">Sign Up</button>
+      </form>
+      <% if (error) { %>
+      <p class="mt-4 text-red-600 text-sm text-center"><%= error %></p>
+      <% } %>
+    </div>
+  </body>
 </html>
