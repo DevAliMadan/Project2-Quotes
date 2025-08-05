@@ -1,31 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/style.css" rel="stylesheet" />
-
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/css/style.css" rel="stylesheet" />
+  <title>Update Quote</title>
 </head>
-<body>
-    <%- include('../partials/navbar') %>
-    <h1>Update Quote</h1>
+<body class="bg-gray-100 min-h-screen pt-20">
+  <%- include('../partials/navbar') %>
 
-    <form action="/quotes/<%= quoteDetails._id %>?_method=PUT" method="post">
-        <label for="quote">Quote: </label>
-        <input type="text" name="quote" id="quote" required>
+  <div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md mt-8">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Update Quote</h1>
 
-        <label for="authors">Author: </label>
-        <input value="" type="text" name="authors" id="authors">
+    <form action="/quotes/<%= quoteDetails._id %>?_method=PUT" method="post" class="space-y-4">
+      <div>
+        <label for="quote" class="block text-sm font-medium text-gray-700">Quote</label>
+        <input
+          type="text"
+          name="quote"
+          id="quote"
+          required
+          value="<%= quoteDetails.quote %>"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-300 focus:outline-none"
+        />
+      </div>
 
-        <label for="category">Category:</label>
-        <select name="category">
-            <% allCategories.forEach((oneCategory) => { %>
-                <option value="<%= oneCategory._id %>"><%= oneCategory.name %></option>
-            <% }) %>
+      <div>
+        <label for="authors" class="block text-sm font-medium text-gray-700">Author</label>
+        <input
+          type="text"
+          name="authors"
+          id="authors"
+          value="<%= quoteDetails.authors %>"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-300 focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+        <select
+          name="category"
+          id="category"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-300 focus:outline-none"
+        >
+          <% allCategories.forEach((oneCategory) => { %>
+            <option value="<%= oneCategory._id %>" <%= quoteDetails.category.toString() === oneCategory._id.toString() ? 'selected' : '' %>>
+              <%= oneCategory.name %>
+            </option>
+          <% }) %>
         </select>
-    
-    <button>Update</button>
+      </div>
+
+      <div class="pt-4">
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+        >
+          Update
+        </button>
+      </div>
     </form>
+  </div>
 </body>
 </html>

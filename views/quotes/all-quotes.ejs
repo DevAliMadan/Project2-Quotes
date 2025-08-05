@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/css/style.css" rel="stylesheet" />
 
     <title>All Quotes</title>
-</head>
-<body>
+  </head>
+  <body class="pt-20 bg-gray-100 min-h-screen">
     <%- include('../partials/navbar') %>
-    
-    <h1>All Quotes</h1>
 
-    <% if(user){ %>
-        <p>user <%= user.username %></p>
-    <% } %>
-        <br>
-        <hr>
-    <% allQuotes.forEach((oneQuote)=>{ %>
-        <div>
-            <p>Quote: <%= oneQuote.quote %></p>
-            <p>Category: <%= oneQuote.category.name %></p>
-            <p>Author: <%= oneQuote.authors %></p>
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="max-w-4xl mx-auto px-4">All Quotes</h1>
 
+      <% if(user){ %>
+      <p class="text-center text-gray-600 mb-4">
+        Logged in as: <span class="font-semibold"><%= user.username %></span>
+      </p>
+      <% } %>
 
-                <a href="/quotes/<%= oneQuote._id %>">See Quote</a>
-            <br>
-            <hr>
-            
+      <div class="space-y-6">
+        <% allQuotes.forEach((oneQuote)=>{ %>
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-lg text-gray-800">
+            <span class="font-semibold">Quote:</span> <%= oneQuote.quote %>
+          </p>
+          <p class="text-sm text-gray-600 mt-2">
+            <span class="font-semibold">Category:</span> <%=
+            oneQuote.category.name %>
+          </p>
+          <p class="text-sm text-gray-600">
+            <span class="font-semibold">Author:</span> <%= oneQuote.authors %>
+          </p>
+          <div>
+            <a
+              href="/quotes/<%= oneQuote._id %>"
+              class="inline-block text-blue-600 hover:underline"
+              >See Quote</a
+            >
+          </div>
         </div>
-    <% }) %>
-</body>
+        <% }) %>
+      </div>
+    </div>
+  </body>
 </html>

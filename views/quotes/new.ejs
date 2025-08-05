@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/css/style.css" rel="stylesheet" />
 
     <title>quotes</title>
-</head>
-<body>
+  </head>
+  <body class="bg-gray-100 pt-20 font-sans">
     <%- include('../partials/navbar') %>
 
-    <h1>Create Your Quote</h1>
-    <form action="/quotes" method="post">
-        <label for="quote">Quote: </label>
-        <input type="text" name="quote" id="quote" required>
+    <div class="max-w-2xl mx-auto bg-white shadow-md p-6 rounded-lg">
+      <h1 class="text-2xl font-bold mb-4 text-center">Create Your Quote</h1>
+      <form action="/quotes" method="post">
+        <div>
+          <label for="quote" class="block text-gray-700">Quote: </label>
+          <input
+            type="text"
+            name="quote"
+            id="quote"
+            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-500"
+            required
+          />
+        </div>
 
-        <label for="authors">Author: </label>
-        <input type="text" name="authors" id="authors">
+        <div>
+          <label for="authors" class="block text-gray-700">Author: </label>
+          <input
+            type="text"
+            name="authors"
+            id="authors"
+            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-500"
+          />
+        </div>
 
-        <label for="category">Category:</label>
-        <select name="category">
+        <div>
+          <label for="category" class="block text-gray-700">Category:</label>
+          <select
+            name="category"
+            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-500"
+          >
             <% allCategories.forEach((oneCategory) => { %>
-                <option value="<%= oneCategory._id %>"><%= oneCategory.name %></option>
+            <option value="<%= oneCategory._id %>">
+              <%= oneCategory.name %>
+            </option>
             <% }) %>
-        </select>
-    
-    <button>Create</button>
-        
-    </form>
-</body>
+          </select>
+        </div>
+
+        <button
+          class="mt-5 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
+          Create
+        </button>
+      </form>
+    </div>
+  </body>
 </html>

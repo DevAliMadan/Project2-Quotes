@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>authors</title>
-</head>
-<body>
-    
-</body>
-</html><!DOCTYPE html>
+  </head>
+  <body></body>
+</html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/css/style.css" rel="stylesheet" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body class="pt-20 bg-gray-100">
     <%- include('../partials/navbar') %>
 
-    <h1>Create The Category</h1>
+    <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow">
+      <h1 class="text-xl font-semibold mb-4">Create The Category</h1>
 
-    <form action="/category" method="post">
-        <label for="name">Category:</label>
-        <input type="text" name="name" id="name">
+      <form action="/category" method="post">
+        <label for="name" class="block mb-2 font-medium">Category:</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="w-full p-2 border border-gray-300 rounded mb-4"
+        />
 
-        <button type="submit">Create A Category</button>
-    </form>
-</body>
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+        >
+          Create A Category
+        </button>
+      </form>
+    </div>
+  </body>
 </html>

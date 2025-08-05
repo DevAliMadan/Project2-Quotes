@@ -65,7 +65,7 @@ router.delete("/:id", async(req,res)=>{
     console.log(req.params)
     try{
         const deleteQuote = await Quotes.findByIdAndDelete(req.params.id)
-        res.redirect("/quotes/new")
+        res.redirect("/quotes/all-quotes")
     }
     catch(error){
         console.log(error)

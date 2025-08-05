@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/style.css" rel="stylesheet" />
-
-    <title>Quote Details</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/css/style.css" rel="stylesheet" />
+  <title>Quote Details</title>
 </head>
-<body>
-    <%- include('../partials/navbar') %>
-    <h1>Quote Details</h1>
+<body class="pt-20 bg-gray-100 min-h-screen font-sans">
+  <%- include('../partials/navbar') %>
 
-    <p>Quote: <%= quoteDetails.quote %></p>
-    <p>Author: <%= quoteDetails.authors %></p>
-    <p>Category: <%= quoteDetails.category.name%></p>
+  <div class="max-w-3xl mx-auto p-6 bg-white rounded shadow mt-6">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quote Details</h1>
 
+    <div class="space-y-3 text-gray-700">
+      <p><span class="font-semibold">Quote:</span> <%= quoteDetails.quote %></p>
+      <p><span class="font-semibold">Author:</span> <%= quoteDetails.authors %></p>
+      <p><span class="font-semibold">Category:</span> <%= quoteDetails.category.name %></p>
+    </div>
 
-    <a href="/quotes/<%= quoteDetails._id %>/update">
-    <button type="button">Edit Quote</button>
-    </a>
-    
+    <div class="mt-6 flex gap-4">
+      <a href="/quotes/<%= quoteDetails._id %>/update">
+        <button class="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded">Edit Quote</button>
+      </a>
 
-    <br>
-    <br>
-    <hr>
-    <h3>Why Do you like it</h3>
+      <form action="/quotes/<%= quoteDetails._id %>?_method=DELETE" method="post">
+        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+          Delete the quote
+        </button>
+      </form>
+    </div>
 
-<% if (!quoteDetails.reason || quoteDetails.reason.length === 0) { %>
-    <form action="/quotes/<%= quoteDetails._id %>/reason" method="post">
-        <label for="creator">Name: </label>
-        <input type="text" name="creator" id="creator">
+    <hr class="my-6" />
 
-        <label for="content">Your Reason: </label>
-        <input type="text" name="content" id="content">
+    <h3 class="text-xl font-semibold mb-4">Why do you like it?</h3>
 
-        <button type="submit">Submit Reason</button>
-    </form>
-<% }else{ %>
-    <% quoteDetails.reason.forEach((oneReason)=>{ %>
-        <p>Reason: <%= oneReason.content %></p>
-        <p>By <%= oneReason.creator %></p>
-    
-    <% }) %>
-<% } %>
-    <form action="/quotes/<%= quoteDetails._id %>?_method=DELETE" method="post">
-        <button type="submit">Delete the quote</button>
-    </form>
+    <% if (!quoteDetails.reason || quoteDetails.reason.length === 0) { %>
+      <form action="/quotes/<%= quoteDetails._id %>/reason" method="post" class="space-y-4">
+        <div>
+          <label for="creator" class="block text-sm font-medium">Name:</label>
+          <input type="text" name="creator" id="creator"
+                 class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300" />
+        </div>
+
+        <div>
+          <label for="content" class="block text-sm font-medium">Your Reason:</label>
+          <input type="text" name="content" id="content"
+                 class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300" />
+        </div>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+          Submit Reason
+        </button>
+      </form>
+    <% } else { %>
+      <% quoteDetails.reason.forEach((oneReason) => { %>
+        <div class="mt-4 p-4 bg-gray-50 border border-gray-200 rounded">
+          <p><span class="font-semibold">Reason:</span> <%= oneReason.content %></p>
+          <p class="text-sm text-gray-500">By <%= oneReason.creator %></p>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
 </body>
 </html>
